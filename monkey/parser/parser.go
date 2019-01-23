@@ -51,13 +51,15 @@ func (p *Parser) ParseProgram() *ast.Program {
 func (p *Parser) parseStatement() ast.Statement {
 	switch p.curToken.Type {
 	case token.LET:
-		return p.parseLetStatemtnt()
+		return p.parseLetStatement()
+	case token.RETURN:
+		return p.parseReturnStatement()
 	default:
 		return nil
 	}
 }
 
-func (p *Parser) parseLetStatemtnt() *ast.LetStatement {
+func (p *Parser) parseLetStatement() *ast.LetStatement {
 	stmt := &ast.LetStatement{Token: p.curToken}
 
 	if !p.expectPeek(token.IDENT) {
@@ -74,6 +76,17 @@ func (p *Parser) parseLetStatemtnt() *ast.LetStatement {
 		p.nextToken()
 	}
 
+	return stmt
+}
+
+func (p *Parser) parseReturnStatement() *ast.ReturnStatement {
+	stmt := &ast.ReturnStatement{Token: p.curToken}
+	p.nextToken()
+
+	//todo skip expression until semicolon is coming
+	for !p.curTokenIs(token.SEMICOLON) {
+		p.nextToken()
+	}
 	return stmt
 }
 
