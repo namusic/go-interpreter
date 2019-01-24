@@ -172,8 +172,8 @@ func TestParsingPrefixExpression(t *testing.T) {
 		operator     string
 		integerValue int64
 	}{
-		{"5;", "!", 5},
-		{"-15", "-", 15},
+		{"!5;", "!", 5},
+		{"-15;", "-", 15},
 	}
 
 	for _, tt := range prefixTests {
@@ -184,7 +184,7 @@ func TestParsingPrefixExpression(t *testing.T) {
 
 		if len(program.Statements) != 1 {
 			t.Fatalf("program statements does not contain %d statements. got=%d\n",
-				l, len(program.Statements))
+				1, len(program.Statements))
 		}
 
 		stmt, ok := program.Statements[0].(*ast.ExpressionStatement)
