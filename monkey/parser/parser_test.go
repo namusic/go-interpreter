@@ -741,7 +741,7 @@ func TestParsingArrayLiterals(t *testing.T) {
 	program := p.ParseProgram()
 	checkParserErrors(t, p)
 
-	stmt, ok := program.statements[0].(*ast.ExpressionStatement)
+	stmt, ok := program.Statements[0].(*ast.ExpressionStatement)
 	array, ok := stmt.Expression.(*ast.ArrayLiteral)
 	if !ok {
 		t.Fatalf("exp not ast.ArrayLiteral. got=%T", stmt.Expression)
@@ -753,5 +753,5 @@ func TestParsingArrayLiterals(t *testing.T) {
 
 	testIntegerLiteral(t, array.Elements[0], 1)
 	testInfixExpression(t, array.Elements[1], 2, "*", 2)
-	testInfixÉxpression(t, array.Elements[2], 3, "+", 3)
+	testInfixExpression(t, array.Elements[2], 3, "+", 3)
 }
