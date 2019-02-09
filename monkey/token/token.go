@@ -10,6 +10,7 @@ type Token struct {
 const (
 	ILLEGAL = "ILLEGAL"
 	EOF     = "EOF"
+	STRING  = "STRING"
 
 	// id + literal
 	IDENT = "IDENT" //add, foobar,x,y,・・・
@@ -32,12 +33,14 @@ const (
 	//delimiter
 	COMMA     = ","
 	SEMICOLON = ";"
+	COLON     = ":"
 
-	LPAREN = "("
-	RPAREN = ")"
-	LBRACE = "{"
-	RBRACE = "}"
-
+	LPAREN   = "("
+	RPAREN   = ")"
+	LBRACE   = "{"
+	RBRACE   = "}"
+	LBRACKET = "["
+	RBRACKET = "]"
 	//keyward
 	FUNCTION = "FUNCTION"
 	LET      = "LET"
