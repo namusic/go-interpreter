@@ -509,7 +509,7 @@ func TestHashIndexExpressions(t *testing.T) {
 			nil,
 		},
 		{
-			`let key = "foo"; {"foo": 5}["key"]`,
+			`let key = "foo"; {"foo": 5}[key]`,
 			5,
 		},
 		{
